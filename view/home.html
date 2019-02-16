@@ -1,8 +1,56 @@
 <body>
 	<h1>o preço médio ponderado é: R$ <?=number_format($preco_ponderado, 2, ',', '.')?></h1>
-	<p>BRAZILIEX = R$: <?=number_format($braziliex_price, 2, ',', '.')?></p>
-	<P>BITCOINTRADE = R$: <?=number_format($bitcointrade_price, 2, ',', '.')?></P>
-	<P>WALLTIME = R$: <?=number_format($walltime_price, 2, ',', '.')?></P>
-	<P>BITCOINTOYOU = R$: <?=number_format($bitcointoyou_price, 2, ',', '.')?></P>
+	<table>
+	<tbody>
+		<tr><th colspan="4">Preços por Exchange</th></tr>
+		<tr>
+			<td>Exchange</td>
+			<td>Preço</td>
+			<td>Volume</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Braziliex</td>
+			<td>R$: <?=number_format($braziliex_price, 2, ',', '.')?></td>
+			<td><?=number_format($braziliex_volume, 4, ',', '.')?></td>
+			<td><?=$pbraziliex?>%</td>
+		</tr>
+		<tr>
+			<td>Bitcoin Trade</td>
+			<td>R$ <?=number_format($bitcointrade_price, 2, ',', '.')?></td>
+			<td><?=number_format($bitcointrade_volume, 4, ',', '.')?></td>
+			<td><?=$pbitcointrade?>%</td>
+		</tr>
+		<tr>
+			<td>Walltime</td>
+			<td>R$: <?=number_format($walltime_price, 2, ',', '.')?></td>
+			<td><?=number_format($walltime_volume, 4, ',', '.')?></td>
+			<td><?=$pwalltime?>%</td>
+		</tr>
+		<tr>
+			<td>Bitcoin to you</td>
+			<td>R$: <?=number_format($bitcointoyou_price, 2, ',', '.')?></td>
+			<td><?=number_format($bitcointoyou_volume, 4, ',', '.')?></td>
+			<td><?=$pwalltime?>%</td>
+		</tr>
+		<tr>
+			<td>Mercado Bitcoin</td>
+			<td>R$: <?=number_format($mercadobitcoin_price, 2, ',', '.')?></td>
+			<td><?=number_format($mercadobitcoin_volume, 4, ',', '.')?></td>
+			<td><?=$pmercadobitcoin?>%</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td><?=$volumetotal?></td>
+			<td>100%</td>
+	</tbody>
+	</table>
+	<footer>
+		<!-- meu código esta licenciado sob a licença MIT, significa que tudo o que eu te peço se for usar este código é que mantenha meu nome: vitorgamer58 -->
+		Powered by <a href="https://github.com/vitorgamer58" target="_blank">vitorgamer58</a>
+		<br>
+		Fork us on <a href="https://github.com/vitorgamer58/cotacao-bitcoin-php" target="_blank">Github</a>Github
+	</footer>
 </body>
 </html>

@@ -41,12 +41,34 @@ $bitcointoyou_price = intval($bitcointoyou_price);
 $bitcointoyou_volume = intval($bitcointoyou_volume);
 $varbitcointoyou = $bitcointoyou_price * $bitcointoyou_volume;
 
+//mercadobitcoin
+$json_mercadobitcoin = file_get_contents("https://www.mercadobitcoin.net/api/btc/ticker/");
+$datamercadobitcoin = json_decode($json_mercadobitcoin, true);
+$mercadobitcoin_price = $datamercadobitcoin['ticker']['last'];
+$mercadobitcoin_volume = $datamercadobitcoin['ticker']['vol'];
+$mercadobitcoin_price = intval($mercadobitcoin_price);
+$mercadobitcoin_volume = intval($mercadobitcoin_volume);
+$varmercadobitcoin = $mercadobitcoin_price * $mercadobitcoin_volume;
+
 
 //Calcula o preco medio ponderado
-$var_media = $varbraziliex + $varbitcointrade + $varwalltime + $varbitcointoyou; //soma todas as variaveis
-$volumetotal = $braziliex_volume + $bitcointrade_volume + $walltime_volume + $bitcointoyou_volume; //soma todos os volumes
-$preco_ponderado = $var_media / $volumetotal; //calcula o preco medio ponderado
-$preco_ponderado = intval($preco_ponderado); //arredonda o numero
+$allvariables = $varbraziliex + $varbitcointrade + $varwalltime + $varbitcointoyou + $varmercadobitcoin; //soma todas as variaveis
+
+$volumetotal = $braziliex_volume + $bitcointrade_volume + $walltime_volume + $bitcointoyou_volume + $mercadobitcoin_volume; //soma todos os volumes
+
+$preco_ponderado = $allvariables / $volumetotal; //calcula o preco medio ponderado
+
+$preco_ponderado = intval($preco_ponderado); //transforma em numero
+
+//Calcula o MarketShare
+$pbraziliex = round(($braziliex_volume/$volumetotal)*100, 2);
+$pbitcointrade = round(($bitcointrade_volume/$volumetotal)*100, 2);
+$pwalltime = round(($walltime_volume/$volumetotal)*100, 2);
+$pbitcointoyou = round(($bitcointoyou_volume/$volumetotal)*100, 2);
+$pmercadobitcoin = round(($mercadobitcoin_volume/$volumetotal)*100, 2);
+
+
+
 //echo "o preço médio ponderado é R$:", number_format($preco_ponderado, 2, ',', '.');
 include 'view/home.html';
 ?>
