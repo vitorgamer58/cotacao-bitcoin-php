@@ -17,7 +17,7 @@
 		</tr>
 		<tr>
 			<td>Bitcoin Trade</td>
-			<td>R$ <?=number_format($bitcointrade_price, 2, ',', '.')?></td>
+			<td>R$: <?=number_format($bitcointrade_price, 2, ',', '.')?></td>
 			<td><?=number_format($bitcointrade_volume, 4, ',', '.')?></td>
 			<td><?=$pbitcointrade?>%</td>
 		</tr>
@@ -40,6 +40,11 @@
 			<td><?=$pmercadobitcoin?>%</td>
 		</tr>
 		<tr>
+			<td>Flow BTC</td>
+			<td>R$: <?=number_format($flowbtc_price, 2, ',', '.')?></td>
+			<td><?=number_format($flowbtc_volume, 4, ',', '.')?></td>
+			<td><?=$pflowbtc?>%</td>
+		<tr>
 			<td></td>
 			<td></td>
 			<td><?=$volumetotal?></td>
@@ -47,10 +52,10 @@
 	</tbody>
 	</table>
 	<footer>
-		<!-- meu código esta licenciado sob a licença MIT, significa que tudo o que eu te peço se for usar este código é que mantenha meu nome: vitorgamer58 -->
+		<!-- meu código esta licenciado sob a licença MIT, significa que tudo o que eu te peço se for usar este código é que mantenha os créditos -->
 		Powered by <a href="https://github.com/vitorgamer58" target="_blank">vitorgamer58</a>
 		<br>
-		Fork us on <a href="https://github.com/vitorgamer58/cotacao-bitcoin-php" target="_blank">Github</a>Github
+		Fork us on <a href="https://github.com/vitorgamer58/cotacao-bitcoin-php" target="_blank">Github</a>
 	</footer>
 </body>
 </html>
