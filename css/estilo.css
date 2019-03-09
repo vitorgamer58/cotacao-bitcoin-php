@@ -1,11 +1,17 @@
 @charset "UTF-8";
 body {
 	color: black;
-	text-align: justify;
+	text-align: center;
 }
 table, td, th, tfoot {
 	border:solid 1px #000; padding:5px;
+	margin: auto;
 }
+
+td#total {
+text-align: center;
+}
+
 p {
 	text-align: justify;
 	text-indent: 50px;

@@ -1,5 +1,5 @@
 <body>
-	<h1>o preço médio ponderado é: R$ <?=number_format($preco_ponderado, 2, ',', '.')?></h1>
+	<h1>O preço médio ponderado é de: R$ <?=number_format($preco_ponderado, 2, ',', '.')?></h1>
 	<table>
 	<tbody>
 		<tr><th colspan="4">Preços por Exchange</th></tr>
@@ -45,17 +45,11 @@
 			<td><?=number_format($flowbtc_volume, 4, ',', '.')?></td>
 			<td><?=$pflowbtc?>%</td>
 		<tr>
-			<td></td>
-			<td></td>
-			<td><?=$volumetotal?></td>
-			<td>100%</td>
+			<td colspan="4" id='total'>O total negociado é de: <?=$volumetotal?> = 100%</td>
+	    </tr>
 	</tbody>
 	</table>
-	<footer>
-		<!-- meu código esta licenciado sob a licença MIT, significa que tudo o que eu te peço se for usar este código é que mantenha os créditos -->
-		Powered by <a href="https://github.com/vitorgamer58" target="_blank">vitorgamer58</a>
-		<br>
-		Fork us on <a href="https://github.com/vitorgamer58/cotacao-bitcoin-php" target="_blank">Github</a>
-	</footer>
-</body>
-</html>
+<br>
+atualiza de 5 em 5 minutos
+<br>
+<br>
