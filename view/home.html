@@ -12,37 +12,37 @@
 		<tr>
 			<td>Braziliex</td>
 			<td>R$: <?=number_format($braziliex_price, 2, ',', '.')?></td>
-			<td><?=number_format($braziliex_volume, 4, ',', '.')?></td>
+			<td><?=number_format($braziliex_volume, 2, ',', '.')?></td>
 			<td><?=$pbraziliex?>%</td>
 		</tr>
 		<tr>
 			<td>Bitcoin Trade</td>
 			<td>R$: <?=number_format($bitcointrade_price, 2, ',', '.')?></td>
-			<td><?=number_format($bitcointrade_volume, 4, ',', '.')?></td>
+			<td><?=number_format($bitcointrade_volume, 2, ',', '.')?></td>
 			<td><?=$pbitcointrade?>%</td>
 		</tr>
 		<tr>
 			<td>Walltime</td>
 			<td>R$: <?=number_format($walltime_price, 2, ',', '.')?></td>
-			<td><?=number_format($walltime_volume, 4, ',', '.')?></td>
+			<td><?=number_format($walltime_volume, 2, ',', '.')?></td>
 			<td><?=$pwalltime?>%</td>
 		</tr>
 		<tr>
 			<td>Bitcoin to you</td>
 			<td>R$: <?=number_format($bitcointoyou_price, 2, ',', '.')?></td>
-			<td><?=number_format($bitcointoyou_volume, 4, ',', '.')?></td>
+			<td><?=number_format($bitcointoyou_volume, 2, ',', '.')?></td>
 			<td><?=$pwalltime?>%</td>
 		</tr>
 		<tr>
 			<td>Mercado Bitcoin</td>
 			<td>R$: <?=number_format($mercadobitcoin_price, 2, ',', '.')?></td>
-			<td><?=number_format($mercadobitcoin_volume, 4, ',', '.')?></td>
+			<td><?=number_format($mercadobitcoin_volume, 2, ',', '.')?></td>
 			<td><?=$pmercadobitcoin?>%</td>
 		</tr>
 		<tr>
 			<td>Flow BTC</td>
 			<td>R$: <?=number_format($flowbtc_price, 2, ',', '.')?></td>
-			<td><?=number_format($flowbtc_volume, 4, ',', '.')?></td>
+			<td><?=number_format($flowbtc_volume, 2, ',', '.')?></td>
 			<td><?=$pflowbtc?>%</td>
 		<tr>
 			<td colspan="4" id='total'>O total negociado é de: <?=$volumetotal?> = 100%</td>
@@ -50,6 +50,5 @@
 	</tbody>
 	</table>
 <br>
-atualiza de 5 em 5 minutos
 <br>
 <br>
