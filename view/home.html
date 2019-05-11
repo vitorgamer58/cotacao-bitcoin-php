@@ -44,11 +44,24 @@
 			<td>R$: <?=number_format($flowbtc_price, 2, ',', '.')?></td>
 			<td><?=number_format($flowbtc_volume, 2, ',', '.')?></td>
 			<td><?=$pflowbtc?>%</td>
+		</tr>
 		<tr>
+			<td>Negocie Coins</td>
+			<td>R$: <?=number_format($negocie_price, 2, ',', '.')?></td>
+			<td><?=number_format($negocie_vol, 2, ',', '.')?></td>
+			<td>*</td>
+		</tr>
+		<tr>
+			<td>TemBTC</td>
+			<td>R$: <?=number_format($tembtc_price, 2, ',', '.')?></td>
+			<td><?=number_format($tembtc_vol, 2, ',', '.')?></td>
+			<td>*</td>
+		</tr>
 			<td colspan="4" id='total'>O total negociado é de: <?=$volumetotal?> = 100%</td>
 	    </tr>
 	</tbody>
 	</table>
+<p style="text-alig: center; font-size: 10px">As exchanges Negociecoins e TemBTC não são consideradas no cálculo da média ponderada por distorcer sozinhas toda a média devido ao alto volume no qual parte da comunidade brasileira de bitcoins não acredita que seja verdadeiro.</p>
 <br>
 <br>
 <br>

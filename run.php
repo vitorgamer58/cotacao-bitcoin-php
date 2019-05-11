@@ -13,7 +13,7 @@ $varbraziliex = $braziliex_price * $braziliex_volume;
 
 
 //bitcointrade
-$json_bitcointrade = file_get_contents("https://api.bitcointrade.com.br/v1/public/BTC/ticker");
+$json_bitcointrade = file_get_contents("https://api.bitcointrade.com.br/v2/public/BRLBTC/ticker");
 $data_bitcoin_trade = json_decode($json_bitcointrade, true);
 $bitcointrade_price = $data_bitcoin_trade['data']['last'];
 $bitcointrade_volume = $data_bitcoin_trade['data']['volume'];
@@ -57,6 +57,17 @@ $flowbtc_volume = $dataflowbtc['data']['Rolling24HrVolume'];
 //$flowbtc_volume = intval($flowbtc_volume);
 $varflowbtc = $flowbtc_price * $flowbtc_volume;
 
+//negociecoins
+$json_negocie = file_get_contents("https://broker.negociecoins.com.br/api/v3/btcbrl/ticker");
+$datanegocie = json_decode($json_negocie, true);
+$negocie_price = $datanegocie['last'];
+$negocie_vol = $datanegocie['vol'];
+
+//tembtc
+$json_tembtc = file_get_contents("https://broker.tembtc.com.br/api/v3/btcbrl/ticker");
+$datatembtc = json_decode($json_tembtc, true);
+$tembtc_price = $datatembtc['last'];
+$tembtc_vol = $datatembtc['vol'];
 
 //Calcula o preco medio ponderado
 $allvariables = $varbraziliex + $varbitcointrade + $varwalltime + $varbitcointoyou + $varmercadobitcoin + $varflowbtc; //soma todas as variaveis
