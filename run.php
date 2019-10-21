@@ -48,31 +48,11 @@ $mercadobitcoin_volume = $datamercadobitcoin['ticker']['vol'];
 //$mercadobitcoin_volume = intval($mercadobitcoin_volume);
 $varmercadobitcoin = $mercadobitcoin_price * $mercadobitcoin_volume;
 
-//flowbtc
-$json_flowbtc = file_get_contents("https://publicapi.flowbtc.com.br/v1/ticker/btcbrl");
-$dataflowbtc = json_decode($json_flowbtc, true);
-$flowbtc_price = $dataflowbtc['data']['LastTradedPx'];
-$flowbtc_volume = $dataflowbtc['data']['Rolling24HrVolume'];
-//$flowbtc_price = intval($flowbtc_price);
-//$flowbtc_volume = intval($flowbtc_volume);
-$varflowbtc = $flowbtc_price * $flowbtc_volume;
-
-//negociecoins
-$json_negocie = file_get_contents("https://broker.negociecoins.com.br/api/v3/btcbrl/ticker");
-$datanegocie = json_decode($json_negocie, true);
-$negocie_price = $datanegocie['last'];
-$negocie_vol = $datanegocie['vol'];
-
-//tembtc
-$json_tembtc = file_get_contents("https://broker.tembtc.com.br/api/v3/btcbrl/ticker");
-$datatembtc = json_decode($json_tembtc, true);
-$tembtc_price = $datatembtc['last'];
-$tembtc_vol = $datatembtc['vol'];
 
 //Calcula o preco medio ponderado
-$allvariables = $varbraziliex + $varbitcointrade + $varwalltime + $varbitcointoyou + $varmercadobitcoin + $varflowbtc; //soma todas as variaveis
+$allvariables = $varbraziliex + $varbitcointrade + $varwalltime + $varbitcointoyou + $varmercadobitcoin; //soma todas as variaveis
 
-$volumetotal = $braziliex_volume + $bitcointrade_volume + $walltime_volume + $bitcointoyou_volume + $mercadobitcoin_volume + $flowbtc_volume; //soma todos os volumes
+$volumetotal = $braziliex_volume + $bitcointrade_volume + $walltime_volume + $bitcointoyou_volume + $mercadobitcoin_volume; //soma todos os volumes
 $volumetotal = round($volumetotal, 8); //Bitcoin tem 8 casas decimais
 
 $preco_ponderado = $allvariables / $volumetotal; //calcula o preco medio ponderado
@@ -85,6 +65,11 @@ $pbitcointrade = round(($bitcointrade_volume/$volumetotal)*100, 2);
 $pwalltime = round(($walltime_volume/$volumetotal)*100, 2);
 $pbitcointoyou = round(($bitcointoyou_volume/$volumetotal)*100, 2);
 $pmercadobitcoin = round(($mercadobitcoin_volume/$volumetotal)*100, 2);
-$pflowbtc = round(($flowbtc_volume/$volumetotal)*100, 2);
+
+//puxa a data e hora do servidor
+//isso mostra em que data estão os valores, para evitar equívocos com o cache
+date_default_timezone_set('America/Sao_Paulo');
+$date = date('Y-m-d H:i');
+
 
 ?>

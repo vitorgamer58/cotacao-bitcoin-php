@@ -13,11 +13,13 @@ text-align: center;
 }
 
 p {
-	text-align: justify;
 	text-indent: 50px;
 }
 
 footer {
 	text-align: center;
 	
+}
+.center {
+	text-align: center;
 }
