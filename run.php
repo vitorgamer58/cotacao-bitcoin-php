@@ -1,6 +1,6 @@
 <?php
 
-$cachetime = 300 //diferença entre o tempo atual e o tempo de ultima modificação dos arquivos de Cache (em segundos)
+$cachetime = 300; //diferença entre o tempo atual e o tempo de ultima modificação dos arquivos de Cache (em segundos)
 //puxa as exchanges
 
 //braziliex
