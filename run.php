@@ -13,6 +13,7 @@ if(file_exists($cache_braziliex)) {
      // too old , re-fetch
      $cache = file_get_contents("https://braziliex.com/api/v1/public/ticker/btc_brl"); //Atualiza o Cache
      file_put_contents($cache_braziliex, $cache);
+     $jsonbraziliex = file_get_contents($cache_braziliex);
   } else {
      $jsonbraziliex = file_get_contents($cache_braziliex);
   }
@@ -20,6 +21,7 @@ if(file_exists($cache_braziliex)) {
   // no cache, create one
   $cache = file_get_contents("https://braziliex.com/api/v1/public/ticker/btc_brl"); //Cria o Cache
   file_put_contents($cache_braziliex, $cache);
+  $jsonbraziliex = file_get_contents($cache_braziliex);
 }
 
 
@@ -43,6 +45,7 @@ if(file_exists($cache_bitcointrade)) {
      // too old , re-fetch
      $cache = file_get_contents("https://api.bitcointrade.com.br/v2/public/BRLBTC/ticker"); //Atualiza o Cache
      file_put_contents($cache_bitcointrade, $cache);
+     $json_bitcointrade = file_get_contents($cache_bitcointrade);
   } else {
      $json_bitcointrade = file_get_contents($cache_bitcointrade);
   }
@@ -50,6 +53,7 @@ if(file_exists($cache_bitcointrade)) {
   // no cache, create one
   $cache = file_get_contents("https://api.bitcointrade.com.br/v2/public/BRLBTC/ticker"); //Cria o Cache
   file_put_contents($cache_bitcointrade, $cache);
+  $json_bitcointrade = file_get_contents($cache_bitcointrade);
 }
 
 
@@ -71,6 +75,7 @@ if(file_exists($cache_walltime)) {
      // too old , re-fetch
      $cache = file_get_contents("https://s3.amazonaws.com/data-production-walltime-info/production/dynamic/walltime-info.json"); //Atualiza o Cache
      file_put_contents($cache_walltime, $cache);
+     $json_walltime = file_get_contents("walltime.cache");
   } else {
      $json_walltime = file_get_contents("walltime.cache");
   }
@@ -78,6 +83,7 @@ if(file_exists($cache_walltime)) {
   // no cache, create one
   $cache = file_get_contents("https://s3.amazonaws.com/data-production-walltime-info/production/dynamic/walltime-info.json"); //Cria o Cache
   file_put_contents($cache_walltime, $cache);
+  $json_walltime = file_get_contents("walltime.cache");
 }
 
 $datawalltime = json_decode($json_walltime, true);
@@ -97,6 +103,7 @@ if(file_exists($cache_bitcointoyou)) {
      // too old , re-fetch
      $cache = file_get_contents("https://www.bitcointoyou.com/api/ticker.aspx"); //Atualiza o Cache
      file_put_contents($cache_bitcointoyou, $cache);
+     $json_bitcointoyou = file_get_contents($cache_bitcointoyou);
   } else {
      $json_bitcointoyou = file_get_contents($cache_bitcointoyou);
   }
@@ -104,6 +111,7 @@ if(file_exists($cache_bitcointoyou)) {
   // no cache, create one
   $cache = file_get_contents("https://www.bitcointoyou.com/api/ticker.aspx"); //Cria o Cache
   file_put_contents($cache_bitcointoyou, $cache);
+  $json_bitcointoyou = file_get_contents($cache_bitcointoyou);
 }
 
 $databitcointoyou = json_decode($json_bitcointoyou, true);
@@ -123,6 +131,7 @@ if(file_exists($cache_mercadobitcoin)) {
      // too old , re-fetch
      $cache = file_get_contents("https://www.mercadobitcoin.net/api/btc/ticker/"); //Atualiza o Cache
      file_put_contents($cache_mercadobitcoin, $cache);
+     $json_mercadobitcoin = file_get_contents($cache_mercadobitcoin);
   } else {
      $json_mercadobitcoin = file_get_contents($cache_mercadobitcoin);
   }
@@ -130,6 +139,7 @@ if(file_exists($cache_mercadobitcoin)) {
   // no cache, create one
   $cache = file_get_contents("https://www.mercadobitcoin.net/api/btc/ticker/"); //Cria o Cache
   file_put_contents($cache_mercadobitcoin, $cache);
+  $json_mercadobitcoin = file_get_contents($cache_mercadobitcoin);
 }
 
 $datamercadobitcoin = json_decode($json_mercadobitcoin, true);
@@ -166,12 +176,13 @@ date_default_timezone_set('America/Sao_Paulo');
 //$date = date('Y-m-d H:i');
 
 //cache da API
-$cache_data = 'data.cache';
+$cache_data = 'data2.cache';
 if(file_exists($cache_data)) {
   if(time() - filemtime($cache_data) > $cachetime) {
      // too old , re-fetch
-     $cache = $date = date('Y-m-d H:i'); //Atualiza o Cache
-     file_put_contents($cache_file, $cache);
+     $cache = date('Y-m-d H:i'); //Atualiza o Cache
+     file_put_contents($cache_data, $cache);
+     $date = file_get_contents($cache_data);
   } else {
      $date = file_get_contents($cache_data);
   }
