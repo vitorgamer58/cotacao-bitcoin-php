@@ -6,10 +6,20 @@ Código simples em PHP que faz as solicitações para as exchanges de criptomoed
 Exchanges:
 
 ```
-Adicionar depois
+Braziliex
+
+Bitcoin Trade
+
+Walltime
+
+Bitcoin to You
+
+Mercado Bitcoin
+
+Novadax
 ```
 
-Endereço: https://bitcaoarbitrado.000webhostapp.com/cotacao/
+Endereço: https://bitcao.notasdovitor.top/cotacao/
 
 
 ![em funcionamento](https://raw.githubusercontent.com/vitorgamer58/cotacao-bitcoin-php/master/img/img.png)

@@ -149,14 +149,35 @@ $mercadobitcoin_volume = $datamercadobitcoin['ticker']['vol'];
 //$mercadobitcoin_volume = intval($mercadobitcoin_volume);
 $varmercadobitcoin = $mercadobitcoin_price * $mercadobitcoin_volume;
 
-
-
+ //NOVADAX
+//Cache
+$cache_novadax = 'novadax.cache';
+if(file_exists('novadax.cache')) {
+  if(time() - filemtime($cache_novadax) > $cachetime) {
+    //valor antigo -> atualizar valor
+    $cache_novadax1 = file_get_contents('https://api.novadax.com/v1/market/ticker?symbol=BTC_BRL');
+    file_put_contents($cache_novadax, $cache_novadax1);
+    $json_novadax = file_get_contents($cache_novadax);
+  } else {
+    $json_novadax = file_get_contents($cache_novadax);
+  }
+} else {
+  //sem arquivo de cache -> criar
+  $cache_novadax1 = file_get_contents('https://api.novadax.com/v1/market/ticker?symbol=BTC_BRL');
+  file_put_contents($cache_novadax, $cache_novadax1);
+  $json_novadax = file_get_contents($cache_novadax);
+}
+$datanovadax = json_decode($json_novadax, true);
+$novadax_price = $datanovadax['data']['lastPrice'];
+$novadax_quote = $datanovadax['data']['quoteVolume24h'];
+$novadax_volume = $novadax_quote / $novadax_price;
+$varnovadax = $novadax_price * $novadax_volume;
 
 
 //Calcula o preco medio ponderado
-$allvariables = $varbraziliex + $varbitcointrade + $varwalltime + $varbitcointoyou + $varmercadobitcoin; //soma todas as variaveis
+$allvariables = $varbraziliex + $varbitcointrade + $varwalltime + $varbitcointoyou + $varmercadobitcoin + $varnovadax; //soma todas as variaveis
 
-$volumetotal = $braziliex_volume + $bitcointrade_volume + $walltime_volume + $bitcointoyou_volume + $mercadobitcoin_volume; //soma todos os volumes
+$volumetotal = $braziliex_volume + $bitcointrade_volume + $walltime_volume + $bitcointoyou_volume + $mercadobitcoin_volume + $novadax_volume; //soma todos os volumes
 $volumetotal = round($volumetotal, 8); //Bitcoin tem 8 casas decimais
 
 $preco_ponderado = $allvariables / $volumetotal; //calcula o preco medio ponderado
@@ -169,6 +190,7 @@ $pbitcointrade = round(($bitcointrade_volume/$volumetotal)*100, 2);
 $pwalltime = round(($walltime_volume/$volumetotal)*100, 2);
 $pbitcointoyou = round(($bitcointoyou_volume/$volumetotal)*100, 2);
 $pmercadobitcoin = round(($mercadobitcoin_volume/$volumetotal)*100, 2);
+$pnovadax = round(($novadax_volume/$volumetotal)*100, 2);
 
 //puxa a data e hora do servidor
 //isso mostra em que data estão os valores, para evitar equívocos com o cache
