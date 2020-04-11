@@ -101,7 +101,7 @@ $cache_bitcointoyou = 'bitcointoyou.cache';
 if(file_exists($cache_bitcointoyou)) {
   if(time() - filemtime($cache_bitcointoyou) > $cachetime) {
      // too old , re-fetch
-     $cache = file_get_contents("https://www.bitcointoyou.com/api/ticker.aspx"); //Atualiza o Cache
+     $cache = file_get_contents("https://back.bitcointoyou.com/API/ticker?pair=BTC_BRLC"); //Atualiza o Cache
      file_put_contents($cache_bitcointoyou, $cache);
      $json_bitcointoyou = file_get_contents($cache_bitcointoyou);
   } else {
@@ -109,14 +109,14 @@ if(file_exists($cache_bitcointoyou)) {
   }
 } else {
   // no cache, create one
-  $cache = file_get_contents("https://www.bitcointoyou.com/api/ticker.aspx"); //Cria o Cache
+  $cache = file_get_contents("https://back.bitcointoyou.com/API/ticker?pair=BTC_BRLC"); //Cria o Cache
   file_put_contents($cache_bitcointoyou, $cache);
   $json_bitcointoyou = file_get_contents($cache_bitcointoyou);
 }
 
 $databitcointoyou = json_decode($json_bitcointoyou, true);
-$bitcointoyou_price = $databitcointoyou['ticker']['last'];
-$bitcointoyou_volume = $databitcointoyou['ticker']['vol'];
+$bitcointoyou_price = $databitcointoyou['summary']['last'];
+$bitcointoyou_volume = $databitcointoyou['summary']['amount'];
 //$bitcointoyou_price = intval($bitcointoyou_price);
 //$bitcointoyou_volume = intval($bitcointoyou_volume);
 $varbitcointoyou = $bitcointoyou_price * $bitcointoyou_volume;
